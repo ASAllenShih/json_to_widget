@@ -4,8 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:json_to_widget/event_listener.dart';
 import 'package:json_to_widget/widget/widget_app_bar.dart';
+import 'package:json_to_widget/widget/widget_center.dart';
 import 'package:json_to_widget/widget/widget_column.dart';
 import 'package:json_to_widget/widget/widget_elevated_button.dart';
+import 'package:json_to_widget/widget/widget_floating_action_button.dart';
+import 'package:json_to_widget/widget/widget_single_child_scroll_view.dart';
 import 'package:json_to_widget/widget/widget_text.dart';
 import 'package:json_to_widget/widget_parser.dart';
 
@@ -15,8 +18,11 @@ class JsonToWidget {
   JsonToWidget({final bool loadDefaultWidgets = true}) {
     if (loadDefaultWidgets) {
       addWidget(WidgetAppBar());
+      addWidget(WidgetCenter());
       addWidget(WidgetColumn());
       addWidget(WidgetElevatedButton());
+      addWidget(WidgetFloatingActionButton());
+      addWidget(WidgetSingleChildScrollView());
       addWidget(WidgetText());
     }
   }
@@ -28,16 +34,13 @@ class JsonToWidget {
     _listeners[listener.id] = listener;
   }
 
-  Widget? buildFromJson(
-    String? json,
-    BuildContext buildContext
-  ) {
+  Widget? buildFromJson(String? json, BuildContext buildContext) {
     if (json == null || json.isEmpty) {
       return null;
     }
     try {
       final dynamic jsonData = JsonDecoder().convert(json);
-      if (jsonData !is Map<String, dynamic>) {
+      if (jsonData! is Map<String, dynamic>) {
         throw Exception('JSON資料格式錯誤');
       }
       final Map<String, dynamic> data = jsonData;
