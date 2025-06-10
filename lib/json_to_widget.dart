@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:json_to_widget/event_listener.dart';
@@ -18,6 +20,28 @@ class JsonToWidget {
 
   void addListener(EventListener listener) {
     _listeners[listener.id] = listener;
+  }
+
+  Widget? buildFromJson(
+    String? json,
+    BuildContext buildContext
+  ) {
+    if (json == null || json.isEmpty) {
+      return null;
+    }
+    try {
+      final dynamic jsonData = JsonDecoder().convert(json);
+      if (jsonData !is Map<String, dynamic>) {
+        throw Exception('JSON資料格式錯誤');
+      }
+      final Map<String, dynamic> data = jsonData;
+      return buildFromMap(data, buildContext);
+    } catch (e) {
+      if (kDebugMode) {
+        print('無法載入介面：$e');
+      }
+      return Icon(Icons.error);
+    }
   }
 
   Widget? buildFromMap(
