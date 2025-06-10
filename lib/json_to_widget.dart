@@ -3,7 +3,10 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:json_to_widget/event_listener.dart';
+import 'package:json_to_widget/widget/widget_app_bar.dart';
 import 'package:json_to_widget/widget/widget_column.dart';
+import 'package:json_to_widget/widget/widget_elevated_button.dart';
+import 'package:json_to_widget/widget/widget_text.dart';
 import 'package:json_to_widget/widget_parser.dart';
 
 class JsonToWidget {
@@ -11,7 +14,10 @@ class JsonToWidget {
   final Map<String, EventListener> _listeners = {};
   JsonToWidget({final bool loadDefaultWidgets = true}) {
     if (loadDefaultWidgets) {
+      addWidget(WidgetAppBar());
       addWidget(WidgetColumn());
+      addWidget(WidgetElevatedButton());
+      addWidget(WidgetText());
     }
   }
   void addWidget(WidgetParser widgetParser) {
