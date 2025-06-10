@@ -42,9 +42,6 @@ class JsonToWidget {
     }
     try {
       final dynamic jsonData = JsonDecoder().convert(json);
-      if (jsonData is! Map) {
-        throw Exception('JSON資料格式錯誤');
-      }
       final Map<String, dynamic> data = Map<String, dynamic>.from(jsonData);
       return buildFromMap(data, buildContext);
     } catch (e) {
