@@ -8,6 +8,7 @@ import 'package:json_to_widget/widget/widget_center.dart';
 import 'package:json_to_widget/widget/widget_column.dart';
 import 'package:json_to_widget/widget/widget_elevated_button.dart';
 import 'package:json_to_widget/widget/widget_floating_action_button.dart';
+import 'package:json_to_widget/widget/widget_scaffold.dart';
 import 'package:json_to_widget/widget/widget_single_child_scroll_view.dart';
 import 'package:json_to_widget/widget/widget_text.dart';
 import 'package:json_to_widget/widget_parser.dart';
@@ -22,6 +23,7 @@ class JsonToWidget {
       addWidget(WidgetColumn());
       addWidget(WidgetElevatedButton());
       addWidget(WidgetFloatingActionButton());
+      addWidget(WidgetScaffold());
       addWidget(WidgetSingleChildScrollView());
       addWidget(WidgetText());
     }
