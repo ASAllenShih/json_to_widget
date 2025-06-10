@@ -1,0 +1,17 @@
+import 'package:json_to_widget/json_to_widget.dart';
+
+void methodTypeListener(
+  JsonToWidget jsonToWidget,
+  String method,
+  Map<String, dynamic> data, {
+  dynamic forceValue,
+}) {
+  dynamic listeners = data[method];
+  if (listeners is Map<String, dynamic>) {
+    final List<String> ids = listeners.keys.toList();
+    for (final String id in ids) {
+      final dynamic value = listeners[id];
+      jsonToWidget.execListener(id, method, forceValue ?? value);
+    }
+  }
+}
