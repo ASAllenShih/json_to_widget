@@ -7,8 +7,8 @@ void methodTypeListener(
   dynamic forceValue,
 }) {
   dynamic listeners = data[method];
-  if (listeners is Map<String, dynamic>) {
-    final List<String> ids = listeners.keys.toList();
+  if (listeners is Map) {
+    final List<String> ids = listeners.keys.toList().cast<String>();
     for (final String id in ids) {
       final dynamic value = listeners[id];
       jsonToWidget.execListener(id, method, forceValue ?? value);

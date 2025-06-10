@@ -6,9 +6,9 @@ Widget? methodTypeWidget(
   dynamic child,
   BuildContext buildContext,
 ) {
-  if (child is Map<String, dynamic>) {
+  if (child is Map) {
     return jsonToWidget.buildFromMap(
-      child,
+      child.cast<String, dynamic>(),
       buildContext,
       jsonToWidget: jsonToWidget,
     );

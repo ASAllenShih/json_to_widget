@@ -14,7 +14,7 @@ class WidgetText extends WidgetParser {
     BuildContext buildContext,
   ) {
     return Text(
-      data['data'] is String ? data['data'] : '',
+      (data['data'] is String) ? data['data'] : '',
       textAlign: methodTextAlign(data),
       textDirection: methodTextDirection(data),
     );

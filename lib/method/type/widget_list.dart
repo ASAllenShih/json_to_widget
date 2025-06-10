@@ -10,7 +10,7 @@ List<Widget>? methodTypeWidgetList(
   if (children is Iterable) {
     final List<Widget> childrenWidgets = children
         .map<Widget?>(
-          (child) => child is Map<String, dynamic>
+          (child) => child is Map
               ? methodTypeWidget(jsonToWidget, child, buildContext)
               : null,
         )
