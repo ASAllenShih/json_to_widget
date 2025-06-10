@@ -73,6 +73,7 @@ class JsonToWidget {
     } catch (e) {
       if (kDebugMode) {
         print('無法載入介面：$e');
+        rethrow;
       }
       return Icon(Icons.error);
     }
