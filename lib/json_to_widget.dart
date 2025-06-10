@@ -48,7 +48,7 @@ class JsonToWidget {
       if (kDebugMode) {
         print('無法載入介面：$e');
       }
-      return Icon(Icons.error);
+      return null;
     }
   }
 
@@ -74,7 +74,7 @@ class JsonToWidget {
       if (kDebugMode) {
         print('無法載入介面：$e');
       }
-      return Icon(Icons.error);
+      return null;
     }
   }
 
