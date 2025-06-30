@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:json_to_widget/json_to_widget.dart';
 
-Widget? methodTypeWidget(
-  JsonToWidget jsonToWidget,
-  dynamic child,
-  BuildContext buildContext,
-) {
-  if (child is Map) {
+class TypeWidget {
+  Widget? to(
+    JsonToWidget jsonToWidget,
+    Map<String, dynamic>? child,
+    BuildContext buildContext,
+  ) {
     return jsonToWidget.buildFromMap(
-      child.cast<String, dynamic>(),
+      child,
       buildContext,
       jsonToWidget: jsonToWidget,
     );
   }
-  return null;
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:json_to_widget/type/type_text_direction.dart';
 
 TextDirection? methodTextDirection(Map<String, dynamic> data) {
-  return switch (data['textDirection']) {
-    'ltr' => TextDirection.ltr,
-    'rtl' => TextDirection.rtl,
-    _ => null,
-  };
+  if (data['textDirection'] is String?) {
+    return TypeTextDirection().to(data['textDirection']);
+  }
+  return null;
 }

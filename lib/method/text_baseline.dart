@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:json_to_widget/type/type_text_baseline.dart';
 
 TextBaseline? methodTextBaseline(Map<String, dynamic> data) {
-  return switch (data['textBaseline']) {
-    'alphabetic' => TextBaseline.alphabetic,
-    'ideographic' => TextBaseline.ideographic,
-    _ => null,
-  };
+  if (data['textBaseline'] is String?) {
+    return TypeTextBaseline().to(data['textBaseline']);
+  }
+  return null;
 }

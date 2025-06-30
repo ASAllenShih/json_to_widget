@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:json_to_widget/json_to_widget.dart';
 import 'package:json_to_widget/method/on_pressed.dart';
-import 'package:json_to_widget/method/type/widget.dart';
+import 'package:json_to_widget/type/type_widget.dart';
 import 'package:json_to_widget/widget_parser.dart';
 
 class WidgetFloatingActionButton extends WidgetParser {
@@ -17,7 +17,7 @@ class WidgetFloatingActionButton extends WidgetParser {
     return FloatingActionButton(
       onPressed: () => methodOnPressed(jsonToWidget, data),
       tooltip: data['tooltip'] is String ? data['tooltip'] : null,
-      child: methodTypeWidget(jsonToWidget, data['child'], buildContext),
+      child: TypeWidget().to(jsonToWidget, data['child'], buildContext),
     );
   }
 }

@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:json_to_widget/type_parser.dart';
 
-Color? methodColor(dynamic color, {BuildContext? buildContext}) {
-  if (color is String) {
-    if (color.startsWith('#')) {
-      color = color.substring(1);
-      final int? hexColor = int.tryParse(color, radix: 16);
-      if (hexColor != null) {
-        return Color(hexColor);
-      }
-    }
-    if (buildContext != null) {
+class TypeColorFromColorScheme extends TypeParser<Color> {
+  @override
+  Color? to(String? value, {BuildContext? buildContext}) {
+    if (value is String && buildContext != null) {
       final ColorScheme colorScheme = Theme.of(buildContext).colorScheme;
-      switch (color) {
+      switch (value) {
         case 'error':
           return colorScheme.error;
         case 'errorContainer':
@@ -106,6 +101,6 @@ Color? methodColor(dynamic color, {BuildContext? buildContext}) {
           return colorScheme.tertiaryFixedDim;
       }
     }
+    return null;
   }
-  return null;
 }

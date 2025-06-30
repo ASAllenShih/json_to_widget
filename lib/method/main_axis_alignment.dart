@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:json_to_widget/type/type_main_axis_alignment.dart';
 
 MainAxisAlignment methodMainAxisAlignment(Map<String, dynamic> data) {
-  return switch (data['mainAxisAlignment']) {
-    'start' => MainAxisAlignment.start,
-    'end' => MainAxisAlignment.end,
-    'center' => MainAxisAlignment.center,
-    'spaceBetween' => MainAxisAlignment.spaceBetween,
-    'spaceAround' => MainAxisAlignment.spaceAround,
-    'spaceEvenly' => MainAxisAlignment.spaceEvenly,
-    _ => MainAxisAlignment.start,
-  };
+  if (data['mainAxisAlignment'] is String?) {
+    return TypeMainAxisAlignment().to(data['mainAxisAlignment']) ??
+        MainAxisAlignment.start;
+  }
+  return MainAxisAlignment.start;
 }

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:json_to_widget/type/type_cross_axis_alignment.dart';
 
 CrossAxisAlignment methodCrossAxisAlignment(Map<String, dynamic> data) {
-  return switch (data['crossAxisAlignment']) {
-    'baseline' => CrossAxisAlignment.baseline,
-    'center' => CrossAxisAlignment.center,
-    'end' => CrossAxisAlignment.end,
-    'start' => CrossAxisAlignment.start,
-    'stretch' => CrossAxisAlignment.stretch,
-    _ => CrossAxisAlignment.center,
-  };
+  if (data['crossAxisAlignment'] is String?) {
+    return TypeCrossAxisAlignment().to(data['crossAxisAlignment']) ??
+        CrossAxisAlignment.start;
+  }
+  return CrossAxisAlignment.start;
 }
